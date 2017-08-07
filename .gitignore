@@ -1,0 +1,8 @@
+#忽略配置文件
+*.class
+*.classpath
+build/
+.settings/
+/catalina.home_IS_UNDEFINED/
+/bin
+.project
