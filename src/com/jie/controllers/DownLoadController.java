@@ -1,34 +1,55 @@
 package com.jie.controllers;
 
-import com.jie.BaseController;
-import com.jie.ResConsts;
-import com.jie.dot.BaseResultDto;
-import com.jie.service.UserService;
-import com.jie.util.IConstants;
+import java.util.List;
 
+import com.jfinal.kit.PathKit;
+import com.jie.BaseController;
+import com.jie.dot.BaseResultDto;
+import com.jie.service.BeautyService;
+
+/**
+ * @Description	下载控制器
+ * @author weishujie
+ * @data 2017年8月7日下午7:29:59
+ */
 public class DownLoadController extends BaseController {
-	private static final UserService userService = new UserService();
+
+	private static final BeautyService beauty = new BeautyService();
 
 	public void index() {
-		// setAttr("user", );
-		// render("user.jsp");
+		render(new BaseResultDto(0, PathKit.getRootClassPath()));
 	}
 
 	public void login() {
-		setAttr("name", "JIE");
-		redirect("/front/login.jsp");
 	}
 
 	public void loginIn() {
-		String userName = getPara("username");
-		String passWord = getPara("password");
-		BaseResultDto result = userService.login(userName, passWord);
-		if (result.getStatus() == ResConsts.Code.SUCCESS) {// 用户名密码正确
-			setSessionAttr(IConstants.SESSION_USER_KEY, result.getDate());// 登陆成功,把用户信息放入session域中
-			render(result);
-		} else {
-			removeSessionAttr(IConstants.SESSION_USER_KEY);
-			render(result);
-		}
 	}
+
+	/**
+	 * @Description	初始化表
+	 * @auth weishujie
+	 * @creattime 2017年8月7日下午7:31:23
+	 */
+	public void init() {// 3084
+		beauty.init();
+		render(new BaseResultDto());
+	}
+
+	public void downLoadFile() {// 3084
+		List<String> strList = beauty.downLoadBeautyPhoto();
+		BaseResultDto result = new BaseResultDto();
+		result.setDate(strList);
+		render(result);
+	}
+
+	public void downLoadPhoto() {// 3084
+		int start = getParaToInt("start");
+		int end = getParaToInt("end");
+		List<String> strList = beauty.downLoadBeautyPhoto(start, end + 1, false);
+		BaseResultDto result = new BaseResultDto();
+		result.setDate(strList);
+		render(result);
+	}
+
 }

@@ -10,7 +10,7 @@ function login(){
 		success: function(data){
 			if(data.status==Consts.SUCCESS){
 				//请求跳转
-				window.location.href=Consts.PATH+"";
+				window.location.href=Consts.PATH;
 			}else{
 				//打印信息
 				alert(data.info);

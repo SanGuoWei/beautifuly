@@ -7,6 +7,11 @@ import com.jie.service.UserService;
 import com.jie.util.IConstants;
 import com.jie.util.StringUtil;
 
+/**
+ * @Description
+ * @author weishujie
+ * @data 2017年8月7日下午2:08:26
+ */
 public class UserController extends BaseController {
 	private static final UserService userService = new UserService();
 
@@ -16,10 +21,14 @@ public class UserController extends BaseController {
 	}
 
 	public void login() {
-		setAttr("name", "JIE");
 		redirect("/front/login.jsp");
 	}
 
+	/**
+	 * @Description 登陆
+	 * @auth weishujie
+	 * @creattime 2017年8月7日下午2:08:30
+	 */
 	public void loginIn() {
 		String userName = getPara("username");
 		String passWord = getPara("password");
@@ -31,6 +40,16 @@ public class UserController extends BaseController {
 			removeSessionAttr(IConstants.SESSION_USER_KEY);
 			render(result);
 		}
+	}
+
+	/**
+	 * @Description 登出
+	 * @auth weishujie
+	 * @creattime 2017年8月7日下午2:08:46
+	 */
+	public void loginOut() {
+		removeSessionAttr(IConstants.SESSION_USER_KEY);
+		forwardAction("/user/login");// 跳转到登陆页
 	}
 
 	/**

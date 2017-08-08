@@ -8,6 +8,7 @@ public class AppRouter extends Routes {
 	public void config() {
 		add("/", MainController.class);
 		add("/user", UserController.class);
+		add("/downLoad", DownLoadController.class);
 	}
 
 }

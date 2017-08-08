@@ -55,4 +55,6 @@ public class Parameters {
 
 	public static boolean DEVMODE = getPro().getBoolean("devMode", false);
 
+	public static String DOWNLOAD_FILEPATH = getPro().get("DownLoadFilePath");// 文件下载路径
+
 }

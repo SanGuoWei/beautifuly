@@ -1,6 +1,7 @@
 package com.jie;
 
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jie.model.Beauty;
 import com.jie.model.User;
 
 /**
@@ -25,5 +26,6 @@ public class _MappingKit {
 	 */
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("user", "id", User.class);
+		arp.addMapping("beauty", "id", Beauty.class);
 	}
 }

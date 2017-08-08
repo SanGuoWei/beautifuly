@@ -1,5 +1,7 @@
 package com.jie.util;
 
+import com.jie.Parameters;
+
 public interface IConstants {
 	String PK = "id";
 
@@ -23,7 +25,14 @@ public interface IConstants {
 
 	int REPORT = 0;
 
+	int FILE_LENGTH = 80;// 美图网一组图片的最大值
+
 	String EMAIL = "810968656@qq.com";
 
 	String AUTHOR = "三国魏";
+
+	String DEFAULT_DOWNLOAD_FILEPATH = Parameters.DOWNLOAD_FILEPATH + "/file";// 默认文件的下载位置
+
+	String PHOTO_DOWNLOAD_FILEPATH = Parameters.DOWNLOAD_FILEPATH + "/photo";// 图片下载位置
+
 }
